@@ -23,6 +23,8 @@ if ("$ENV{GTEST}" STREQUAL "y")
     message("!Gtests're enabled!")
 
     find_package(GTest REQUIRED)
+
+    include_directories(tests)
     add_definitions(-D_GTEST)
 endif ()
 
@@ -33,7 +35,7 @@ link_directories(
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 
 if ("$ENV{GTEST}" STREQUAL "y")
-    target_link_libraries(${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES} )
+    target_link_libraries(${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES} gmock)
 endif ()
 
 target_link_libraries(${PROJECT_NAME} chilkat-9.5.0 resolv pthread json_spirit)

@@ -1,23 +1,23 @@
 #include <iostream>
 #include <cassert>
 
-#include <CkOAuth2.h>
+#include <CkHttp.h>
 #include <CkHttpRequest.h>
 #include <CkHttpResponse.h>
 
 #include "TwitterManager.h"
 
+using boost::optional;
+using std::string;
 
-TwitterManager::~TwitterManager() {
-    delete _resp;
-}
+optional<string> TwitterManager::GetJsonWithTweets(const string& tweet_name) const {
+    static CkHttp _http;
+    static char const * kUrlHead = "https://api.twitter.com/1.1/search/tweets.json?";
 
-bool TwitterManager::DoRequest(const std::string& tweet_name) {
-    bool result = false;
-
+    optional<string> res;
     if (!_http.UnlockComponent("Anything for 30-day trial")) {
         std::cerr << _http.lastErrorText() << "\n";
-        return result;
+        return res;
     }
 
     _http.put_OAuth1(true);
@@ -27,26 +27,15 @@ bool TwitterManager::DoRequest(const std::string& tweet_name) {
     _http.put_OAuthToken("781888155372908544-PVbpIFaZnGmElncuWHexnK2i4weHpjV");
     _http.put_OAuthTokenSecret("BXtB8ZS08b66eytazXuygzZOaMolZBMQ0sNHDuKd6svyG");
 
-    delete _resp;
     std::string request = kUrlHead + ("q=" + tweet_name);
-    _resp = _http.QuickGetObj(request.c_str());
+    CkHttpResponse * _resp = _http.QuickGetObj(request.c_str());
 
-    if (!_resp) {
-        std::cerr << _http.lastErrorText() << "\n";
-        return result;
-    }
-
-    if (200 == _resp->get_StatusCode()) {
-        result = true;
+    if (_resp || 200 == _resp->get_StatusCode()) {
+        res = _resp->bodyStr();
     } else {
         std::cerr << _http.lastErrorText() << "\r\n";
     }
+    delete _resp;
 
-    return result;
-}
-
-std::string TwitterManager::GetLastResponseJson() {
-    assert(nullptr != _resp);
-
-    return _resp->bodyStr();
+    return res;
 }

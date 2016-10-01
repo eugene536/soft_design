@@ -1,10 +1,10 @@
 #pragma once
 
 #include <boost/optional.hpp>
-#include <json_spirit.h>
+#include <TwitterResponce.h>
 
 struct JsonParser {
     JsonParser() = default;
     virtual ~JsonParser() = default;
-    virtual boost::optional<json_spirit::Value> Parse(const std::string json);
+    virtual boost::optional<TwitterResponce> Parse(const std::string& json) const;
 };

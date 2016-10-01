@@ -5,6 +5,5 @@
 struct MockTwitterManager
     : public TwitterManager
 {
-    MOCK_METHOD1(DoRequest, bool(const std::string&));
-    MOCK_METHOD0(GetLastResponseJson, std::string ());
+    MOCK_METHOD1(GetJsonWithTweets, boost::optional<std::string> (const std::string& tweet_name));
 };
