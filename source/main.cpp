@@ -1,5 +1,13 @@
 #include <string>
+
 #include <gtest/gtest.h>
+
+#include <TweetStatistics.h>
+#include <JsonParser.h>
+#include <TwitterManager.h>
+
+using namespace boost;
+using namespace std;
 
 int main(int argc, char * argv[]) {
     if (argc > 1 && argv[1] == std::string("-utester")) {
@@ -7,14 +15,31 @@ int main(int argc, char * argv[]) {
         ::testing::InitGoogleTest(&argc, argv);
         return RUN_ALL_TESTS();
     } else {
-    //    TwitterManager tm;
-    //    if (tm.DoRequest("itmo")) {
-    //        std::cout << tm.GetLastResponseJson() << std::endl;
-    //    }
+        string hash_tag = "itmo";
+//        cin >> hash_tag;
 
-//        JsonParser jp;
-//        jp.get();
+        TwitterManager tm;
+        optional<string> json = tm.GetJsonWithTweets(hash_tag);
+        if (!json) {
+            cout << "Can't get tweets with hashtag: " << hash_tag << endl;
+            return EXIT_FAILURE;
+        }
+
+        JsonParser jp;
+        optional<TwitterResponce> responce = jp.Parse(json.get());
+
+        if (!responce) {
+            cout << "Can't parse json: " << json.get() << endl;
+            return EXIT_FAILURE;
+        }
+
+        TweetStatistics ts;
+        map<size_t, size_t> res = ts.GetCntTweets(responce.get());
+
+        for (pair<size_t, size_t> p: res) {
+            cout << "day, stat: " << p.first << ", " << p.second << "\n";
+        }
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
