@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="matrix1">graphs/adjacency_matrix1.txt</file>
+        <file alias="edges1">graphs/edges_list1.txt</file>
+    </qresource>
+</RCC>
