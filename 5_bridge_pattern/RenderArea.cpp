@@ -63,48 +63,4 @@ void RenderArea::paintEvent(QPaintEvent * /* event */) {
     }
 
     graph->draw();
-
-//    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-//        QDataStream textStream(&file);
-
-//        textStream >> *graph;
-//        std::cerr << *graph ;
-
-//        qDebug() << "here";
-//        QRect rect(10, 20, 30, 60);
-
-//        QPainter painter(this);
-//    //    painter.setPen(pen);
-//    //    painter.setBrush(brush);
-
-//        for (int x = 0; x < width(); x += 100) {
-//            for (int y = 0; y < height(); y += 100) {
-//    //            int x = 0;
-//    //            int y = 0;
-//                painter.save();
-//                painter.translate(x, y);
-//    //            if (transformed) {
-//    //                painter.translate(50, 50);
-//    //                painter.rotate(60.0);
-//    //                painter.scale(0.6, 0.9);
-//    //                painter.translate(-50, -50);
-//    //            }
-
-//                switch (shape) {
-//                case Line:
-//                    painter.drawLine(rect.bottomLeft(), rect.topRight());
-//                    break;
-//                case Ellipse:
-//                    painter.drawEllipse(rect);
-//                    break;
-//                }
-//                painter.restore();
-//            }
-//        }
-
-//    //    painter.setRenderHint(QPainter::Antialiasing, false);
-//    //    painter.setPen(palette().dark().color());
-//    //    painter.setBrush(Qt::NoBrush);
-//    //    painter.drawRect(QRect(0, 0, width() - 1, height() - 1));
-//    }
 }

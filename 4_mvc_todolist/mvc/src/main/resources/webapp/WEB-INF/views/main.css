@@ -1,0 +1,28 @@
+body {
+}
+
+.main_table {
+    border-spacing: 10px 20px;
+    text-align: center;
+}
+
+.main_table td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.secondary_table td {
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+}
+
+.add_group {
+    margin-top: 10px;
+}
+
+h2 {
+    padding: 2px;
+    margin:auto;
+}

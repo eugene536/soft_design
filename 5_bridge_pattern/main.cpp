@@ -1,13 +1,7 @@
 #include <QApplication>
+#include <QDebug>
 
 #include "Window.h"
-#include "AdjacencyMatrixGraph.h"
-#include "GreenDrawingApi.h"
-
-//int main(int argc, char *argv[])
-//{
-//    adjacency_matrix_graph g(new green_drawing_api(), graph::graph_t());
-//    g.draw();
 
 int main(int argc, char *argv[]) {
     Q_INIT_RESOURCE(graphs);
