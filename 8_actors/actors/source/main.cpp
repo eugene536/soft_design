@@ -69,7 +69,7 @@ void master(event_based_actor * self, std::string const & request, const std::ve
 
 //            aout(self) << "responce from ~ arrived" << endl;
 
-            if (res->_cnt_responces == 3) {
+            if (res->_cnt_responces == actors.size()) {
 
                 for (std::string const & sin_responce: res->_responce) {
                     aout(self) << sin_responce << endl;

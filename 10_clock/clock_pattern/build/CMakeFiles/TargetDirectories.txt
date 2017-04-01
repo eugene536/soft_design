@@ -1,0 +1,3 @@
+/home/eugene/university/4course/soft_design/8_actors/actors/build/CMakeFiles/edit_cache.dir
+/home/eugene/university/4course/soft_design/8_actors/actors/build/CMakeFiles/rebuild_cache.dir
+/home/eugene/university/4course/soft_design/8_actors/actors/build/CMakeFiles/actors.dir

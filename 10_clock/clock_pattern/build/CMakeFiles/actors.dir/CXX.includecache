@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/stub_server.h
+string
+-
+vector
+-
+map
+-
+
+/home/eugene/university/4course/soft_design/8_actors/actors/source/main.cpp
+string
+-
+iostream
+-
+thread
+-
+chrono
+-
+caf/all.hpp
+-
+
+/home/eugene/university/4course/soft_design/8_actors/actors/source/main2.cpp
+string
+-
+iostream
+-
+thread
+-
+chrono
+-
+caf/all.hpp
+-
+
+/home/eugene/university/4course/soft_design/8_actors/actors/source/stub_server.cpp
+stub_server.h
+/home/eugene/university/4course/soft_design/8_actors/actors/source/stub_server.h
+
